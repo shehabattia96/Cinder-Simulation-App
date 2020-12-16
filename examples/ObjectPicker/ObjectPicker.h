@@ -1,10 +1,11 @@
 #ifndef ObjectPicker_h
 #define ObjectPicker_h
-#include "../../src/BaseCinderApp.h"
+
+#include "../../src/CinderAppHelper.h"
 
 using namespace std;
 
-class ObjectPicker : public BaseCinderApp {
+class ObjectPicker : public App {
   public:
 	void setup() override;
 	void mouseDown( MouseEvent event ) override;
@@ -12,7 +13,10 @@ class ObjectPicker : public BaseCinderApp {
 	void draw() override;
 	void updateSettingsSideBarParameters(bool updateNamesOfObjectsList);
   private:
-	bool mPrintFps;
+  	CameraPersp	mCam;
+	std::map<std::string, SimulationObject::type> simulationObjectsMap;
+	SettingsSideBarStruct::type settingsSideBar;
 	params::InterfaceGlRef settingsSideBarParameters;
+	bool mPrintFps;
 };
 #endif

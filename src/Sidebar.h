@@ -4,7 +4,7 @@
 #include "./SimulationObject.h"
 
 /**
- * SettingsSideBarStruct handles displaying a list of SimulationObject(s) created in BaseCinderApp and returning a pointer to the current selectedObject.
+ * SettingsSideBarStruct handles displaying a list of SimulationObject(s) created in CinderSimulationApp and returning a pointer to the current selectedObject.
 */
 struct SettingsSideBarStruct {
 	public:

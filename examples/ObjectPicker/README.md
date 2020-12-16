@@ -1,4 +1,4 @@
-# BaseCinderApp example: Object Picker
+# CinderSimulationApp example: Object Picker
 
 Object Picker creates a Cinder gui with two cubes of different colors and displays Cinder settings widget (via AntTweakBar).
 

@@ -11,6 +11,7 @@ ci_make_app(
 	INCLUDES	${APP_PATH}/include
 	CINDER_PATH ${CINDER_EXTRN_PATH}
 	RESOURCES   ${APP_PATH}/resources/cinder_app_icon.ico
+	LIBRARIES   CinderSimulationApp
 )
 
 message("Done building ObjectPicker")  

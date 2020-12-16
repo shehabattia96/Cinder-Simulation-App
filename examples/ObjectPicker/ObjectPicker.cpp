@@ -3,8 +3,8 @@
 
 void ObjectPicker::draw()
 { // this is called every frame per second per window
-	gl::clear( Color( 0.5, 0.5, 0.5 ) );
-	BaseCinderApp::draw();
+	onDraw(mCam, false);
+	drawSimulationObjects(this->simulationObjectsMap);
 
 	// Draw the settings widget
 	settingsSideBarParameters->draw();
@@ -37,7 +37,7 @@ void ObjectPicker::setup()
 	SimulationObject cube(slice, shader); // second argument defaults to the stock shader.
 	
 	// add the SimulationObject to a map so we can retreive it by name
-	(*BaseCinderApp::getSimulationObjectsMap())["cube"] = cube;
+	this->simulationObjectsMap["cube"] = cube;
 
 	
 	// apply modifiers and initialize a new SimulationObject
@@ -46,7 +46,7 @@ void ObjectPicker::setup()
 	cube2.color = redColor;
 	
 	// add the SimulationObject to a map so we can retreive it by name
-	(*BaseCinderApp::getSimulationObjectsMap())["cube2"] = cube2;
+	this->simulationObjectsMap["cube2"] = cube2;
 
 
 	/***** Create Settings Widget *****/
@@ -62,7 +62,7 @@ void ObjectPicker::setup()
 */
 void ObjectPicker::updateSettingsSideBarParameters(bool updateNamesOfObjectsList) {
 	if (updateNamesOfObjectsList) {
-		this->settingsSideBar.updateNamesOfObjectsList( BaseCinderApp::getSimulationObjectsMap() );
+		this->settingsSideBar.updateNamesOfObjectsList( &this->simulationObjectsMap );
 	}
 	settingsSideBarParameters.reset();
 
@@ -92,7 +92,7 @@ void ObjectPicker::updateSettingsSideBarParameters(bool updateNamesOfObjectsList
 			.keyDecr( "[" )
 			.keyIncr( "]" )
 			.updateFn( [this] { 
-				settingsSideBar.setSelectedObject( BaseCinderApp::getSimulationObjectsMap() );
+				settingsSideBar.setSelectedObject( &this->simulationObjectsMap );
 			} );
 			
 	} else {
@@ -115,7 +115,7 @@ void ObjectPicker::update()
 void ObjectPicker::mouseDown( MouseEvent event )
 {
 	// grab cube
-	SimulationObject* cube = &(*BaseCinderApp::getSimulationObjectsMap())["cube"];
+	SimulationObject* cube = &(this->simulationObjectsMap["cube"]);
 	float modifier = (event.isRightDown() ? -1.f : 1.f) * .15f;
 	// apply a transformation, which will get drawn and reset in the next frame
 	cube->translation = ci::vec3(modifier*10 + cube->translation.x, 0, 0);
@@ -123,7 +123,7 @@ void ObjectPicker::mouseDown( MouseEvent event )
 
 	
 	// grab cube
-	SimulationObject* cube2 = &(*BaseCinderApp::getSimulationObjectsMap())["cube2"];
+	SimulationObject* cube2 = &(this->simulationObjectsMap["cube2"]);
 	// apply a transformation, which will get drawn and reset in the next frame
 	cube2->translation = ci::vec3(-1 * modifier*10 + cube2->translation.x, 0, 0);
 	cube2->rotation = angleAxis(-1 * modifier + cube2->rotation.w, vec3( cube2->rotation.x -1 * modifier, cube2->rotation.y-1 * modifier, cube2->rotation.z-1 * modifier));

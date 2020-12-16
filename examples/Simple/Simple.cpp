@@ -2,8 +2,8 @@
 
 void Simple::draw()
 { // this is called every frame per second per window
-	gl::clear( Color( 0.5, 0.5, 0.5 ) );
-	BaseCinderApp::draw();
+	onDraw(mCam, false);
+	drawSimulationObjects(this->simulationObjectsMap);
 }
 
 /**
@@ -37,7 +37,7 @@ void Simple::setup()
 	SimulationObject cube(slice, shader); // second argument defaults to the stock shader.
 	
 	// add the SimulationObject to a map so we can retreive it by name
-	(*BaseCinderApp::getSimulationObjectsMap())["cube"] = cube;
+	this->simulationObjectsMap["cube"] = cube;
 
 	
 	// apply modifiers and initialize a new SimulationObject for cube2
@@ -46,7 +46,7 @@ void Simple::setup()
 	cube2.color = redColor;
 	
 	// add the SimulationObject to a map so we can retreive it by name
-	(*BaseCinderApp::getSimulationObjectsMap())["cube2"] = cube2;
+	this->simulationObjectsMap["cube2"] = cube2;
 }
 
 CINDER_APP( Simple, RendererGl(RendererGl::Options().msaa(16)) ) // render with anti-aliassing
