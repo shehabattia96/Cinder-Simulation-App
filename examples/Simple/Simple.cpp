@@ -49,4 +49,10 @@ void Simple::setup()
 	this->simulationObjectsMap["cube2"] = cube2;
 }
 
+
+void Simple::resize()
+{
+	onResizeWindow(this->mCam); // helps keep the drawn objects' scale when the GUI window is resized.
+}
+
 CINDER_APP( Simple, RendererGl(RendererGl::Options().msaa(16)) ) // render with anti-aliassing

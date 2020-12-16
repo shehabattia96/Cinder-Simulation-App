@@ -129,4 +129,10 @@ void ObjectPicker::mouseDown( MouseEvent event )
 	cube2->rotation = angleAxis(-1 * modifier + cube2->rotation.w, vec3( cube2->rotation.x -1 * modifier, cube2->rotation.y-1 * modifier, cube2->rotation.z-1 * modifier));
 }
 
+
+void ObjectPicker::resize()
+{
+	onResizeWindow(this->mCam); // helps keep the drawn objects' scale when the GUI window is resized.
+}
+
 CINDER_APP( ObjectPicker, RendererGl(RendererGl::Options().msaa(16)), prepareSettingsSideBar ) // render with anti-aliassing

@@ -11,6 +11,7 @@ class ObjectPicker : public App {
 	void mouseDown( MouseEvent event ) override;
 	void update() override;
 	void draw() override;
+	void resize();
 	void updateSettingsSideBarParameters(bool updateNamesOfObjectsList);
   private:
   	CameraPersp	mCam;
