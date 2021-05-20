@@ -10,6 +10,7 @@ class Simple : public App {
   public:
 	void setup() override;
 	void draw() override;
+	void resize();
   private:
   	CameraPersp	mCam;
 	std::map<std::string, SimulationObject::type> simulationObjectsMap;

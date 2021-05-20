@@ -11,7 +11,8 @@ class ObjectPicker : public App {
 	void mouseDown( MouseEvent event ) override;
 	void update() override;
 	void draw() override;
-	void updateSettingsSidebarParameters(bool updateNamesOfObjectsList);
+	void resize();
+	void updateSettingsSideBarParameters(bool updateNamesOfObjectsList);
   private:
   	CameraPersp	mCam;
 	std::map<std::string, SimulationObject::type> simulationObjectsMap;
