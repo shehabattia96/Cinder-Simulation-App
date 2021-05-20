@@ -11,12 +11,12 @@ class ObjectPicker : public App {
 	void mouseDown( MouseEvent event ) override;
 	void update() override;
 	void draw() override;
-	void updateSettingsSideBarParameters(bool updateNamesOfObjectsList);
+	void updateSettingsSidebarParameters(bool updateNamesOfObjectsList);
   private:
   	CameraPersp	mCam;
 	std::map<std::string, SimulationObject::type> simulationObjectsMap;
-	SettingsSideBarStruct::type settingsSideBar;
-	params::InterfaceGlRef settingsSideBarParameters;
+	SettingsSidebarStruct::type settingsSidebar;
+	params::InterfaceGlRef settingsSidebarParameters;
 	bool mPrintFps;
 };
 #endif

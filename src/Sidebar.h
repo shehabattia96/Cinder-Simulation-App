@@ -4,12 +4,12 @@
 #include "./SimulationObject.h"
 
 /**
- * SettingsSideBarStruct handles displaying a list of SimulationObject(s) created in CinderSimulationApp and returning a pointer to the current selectedObject.
+ * SettingsSidebarStruct handles displaying a list of SimulationObject(s) created in CinderSimulationApp and returning a pointer to the current selectedObject.
 */
-struct SettingsSideBarStruct {
+struct SettingsSidebarStruct {
 	public:
-		SettingsSideBarStruct() {};
-		typedef struct SettingsSideBarStruct type;
+		SettingsSidebarStruct() {};
+		typedef struct SettingsSidebarStruct type;
 
 		std::vector<std::string> namesOfObjects;
 
@@ -37,7 +37,7 @@ struct SettingsSideBarStruct {
 		}
 };
 
-void prepareSettingsSideBar(App::Settings *settings)
+void prepareSettingsSidebar(App::Settings *settings)
 {
 	settings->setHighDensityDisplayEnabled();
 }

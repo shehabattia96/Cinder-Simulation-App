@@ -44,7 +44,11 @@ struct SimulationObject {
 			rebuildBatchRef();
 		}
 		SimulationObject(geom::SourceMods sourceIn, gl::GlslProgRef shaderIn) : source(sourceIn), shader(shaderIn) {
-			if (shaderIn == NULL) this->shader = gl::getStockShader( gl::ShaderDef().lambert().color() );
+			if (shaderIn == NULL) {
+				auto colorShader = gl::ShaderDef().lambert().color();
+				auto stockShader = gl::getStockShader( colorShader );
+				this->shader = stockShader;
+			}
 			rebuildBatchRef();
 		}
 
@@ -84,6 +88,7 @@ struct SimulationObject {
 
 		void draw() {
 			if (preDrawFunction != NULL) preDrawFunction();
+
 			gl::multModelMatrix(this->worldPose);
 			gl::translate(this->translation);
 			gl::rotate(this->rotation);
